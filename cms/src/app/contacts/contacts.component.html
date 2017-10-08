@@ -1,9 +1,12 @@
-<div style="display: flex; flex-flow: row nowrap; margin: auto;" class="row">
+<div class="row">
   <div class="col-md-5">
-    <cms-contact-list></cms-contact-list>
+    <app-contact-list (contactWasSelected)="selectedContact = $event"></app-contact-list>
   </div>
-  <div class="col-md-4">
-    <cms-contact-detail></cms-contact-detail>
+  <div class="col-md-5">
+    <app-contact-detail *ngIf="selectedContact; else infotext"
+    [contact]="selectedContact"></app-contact-detail>
+    <ng-template #infotext>
+      <p>Please select a Contact!</p>
+    </ng-template>
   </div>
-
 </div>
